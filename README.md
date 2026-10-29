@@ -42,7 +42,7 @@ mobility requirement, staysSeated, passengers, companions, notes, consent. Never
 
 ## Launch checklist (from the business plan)
 
-While `prelaunch` is `true`, a preview banner shows, legal pages carry a template notice, and robots/meta block
+While `prelaunch` is `true`, legal pages carry a template notice, and robots/meta block
 indexing. Before setting it to `false` and spending on ads:
 
 **Business identity**

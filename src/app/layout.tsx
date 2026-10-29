@@ -3,7 +3,6 @@ import Script from "next/script";
 import { CallPopup } from "@/components/CallPopup";
 import { JsonLd } from "@/components/JsonLd";
 import { MobileCallBar } from "@/components/MobileCallBar";
-import { PrelaunchBanner } from "@/components/PrelaunchBanner";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { businessName, site } from "@/config/site";
@@ -53,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <PrelaunchBanner />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

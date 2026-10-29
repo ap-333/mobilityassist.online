@@ -16,9 +16,8 @@ export const site = {
     "Book wheelchair-accessible and scheduled rides with help from a real person. We coordinate with independent local providers and explain costs before you commit.",
 
   /**
-   * While true, a visible notice tells visitors the site is in preview, the
-   * request form does not send, legal pages carry a template notice, and
-   * robots/meta tags block indexing.
+   * While true, legal pages carry a template notice and robots/meta tags
+   * block indexing. Set to false once the launch checklist is done.
    */
   prelaunch: true,
 
