@@ -13,7 +13,7 @@ export const site = {
   domainLabel: "MobilityAssist.online",
   tagline: "Accessible transportation, arranged with a real person",
   description:
-    "Independent booking and coordination service. Mobility Assist helps passengers, families and caregivers find and arrange wheelchair-accessible and scheduled rides with independent local transportation providers.",
+    "Book wheelchair-accessible and scheduled rides with help from a real person. We coordinate with independent local providers and explain costs before you commit.",
 
   /**
    * While true, a visible notice tells visitors the site is in preview, the
@@ -68,6 +68,13 @@ export const site = {
    * webhook, etc.). While null, the form is shown but cannot be submitted.
    */
   requestFormEndpoint: null as string | null,
+
+  /** Official social or directory profiles (Google Business Profile, Facebook, LinkedIn, Yelp). Used in structured data. */
+  socialProfiles: [] as string[],
+
+  /** Search engine ownership tags. Paste only the token from Google Search Console or Bing Webmaster Tools. */
+  googleSiteVerification: null as string | null,
+  bingSiteVerification: null as string | null,
 
   /** Google Ads tag (gtag.js). Set to null to remove the tag from every page. */
   googleAdsId: null as string | null, // e.g. "AW-XXXXXXXXXX"

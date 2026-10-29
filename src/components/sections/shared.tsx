@@ -52,7 +52,7 @@ export function WhoWeHelp() {
         {audiences.map(({ icon: Icon, title, body, href, photo }) => (
           <li key={title}>
             <Link href={href} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-shadow hover:shadow-md">
-              <Photo photo={photo} className="aspect-[3/2] w-full" />
+              <Photo photo={photo} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="aspect-[3/2] w-full" />
               <div className="flex flex-1 flex-col p-6">
               <span className="-mt-12 inline-flex size-12 items-center justify-center rounded-xl bg-teal-50 text-teal ring-4 ring-white">
                 <Icon className="size-7" />

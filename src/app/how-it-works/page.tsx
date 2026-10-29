@@ -2,13 +2,18 @@ import { CtaBand } from "@/components/CtaBand";
 import { DisclosureBox } from "@/components/DisclosureBox";
 import { PageHero, Section, SectionHeading } from "@/components/PageHero";
 import { photos } from "@/content/photos";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
+import { pageSchema } from "@/lib/schema";
 
-export const metadata = pageMetadata({
+const page = {
   title: "How It Works",
-  description: "How Mobility Assist coordinates accessible transportation with independent providers, from your first call to a confirmed booking.",
+  description:
+    "How Mobility Assist coordinates accessible transportation with independent providers, from your first call to a confirmed booking.",
   path: "/how-it-works/",
-});
+};
+
+export const metadata = pageMetadata(page);
 
 const stages = [
   {
@@ -40,29 +45,32 @@ const stages = [
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="How it works" title="From your first call to a confirmed ride" placement="how-hero" photo={photos.phoneCall}>
-        <p>
-          Mobility Assist is a booking and coordination service. We do the legwork of finding a suitable independent provider; the provider
-          performs the ride.
-        </p>
-      </PageHero>
-      <Section labelledBy="stages-heading">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr]">
-          <div>
-            <SectionHeading id="stages-heading" title="What happens, step by step" />
-            <ol className="mt-8 space-y-5">
-              {stages.map((s) => (
-                <li key={s.title} className="rounded-2xl border border-line bg-white p-6">
-                  <h3 className="text-lg font-bold text-navy">{s.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{s.body}</p>
-                </li>
-              ))}
-            </ol>
+      <JsonLd graph={pageSchema(page.path, page.title, page.description)} />
+      <>
+        <PageHero eyebrow="How it works" title="From your first call to a confirmed ride" placement="how-hero" photo={photos.phoneCall}>
+          <p>
+            Mobility Assist is a booking and coordination service. We do the legwork of finding a suitable independent provider; the
+            provider performs the ride.
+          </p>
+        </PageHero>
+        <Section labelledBy="stages-heading">
+          <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr]">
+            <div>
+              <SectionHeading id="stages-heading" title="What happens, step by step" />
+              <ol className="mt-8 space-y-5">
+                {stages.map((s) => (
+                  <li key={s.title} className="rounded-2xl border border-line bg-white p-6">
+                    <h3 className="text-lg font-bold text-navy">{s.title}</h3>
+                    <p className="mt-2 leading-relaxed text-muted">{s.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <DisclosureBox className="h-fit lg:sticky lg:top-32" />
           </div>
-          <DisclosureBox className="h-fit lg:sticky lg:top-32" />
-        </div>
-      </Section>
-      <CtaBand placement="how-cta-band" />
+        </Section>
+        <CtaBand placement="how-cta-band" />
+      </>
     </>
   );
 }

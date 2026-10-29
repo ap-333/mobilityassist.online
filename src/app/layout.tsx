@@ -1,24 +1,36 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { CallPopup } from "@/components/CallPopup";
+import { JsonLd } from "@/components/JsonLd";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { PrelaunchBanner } from "@/components/PrelaunchBanner";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { site } from "@/config/site";
+import { businessName, site } from "@/config/site";
+import { shareImage } from "@/lib/metadata";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Accessible Transportation Booking & Coordination`,
+    default: `Accessible Transportation Booking | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
+  authors: [{ name: businessName, url: site.url }],
+  creator: businessName,
+  publisher: businessName,
+  category: "Transportation",
   alternates: { canonical: "/" },
-  openGraph: { siteName: site.name, type: "website", locale: "en_US", url: "/" },
-  twitter: { card: "summary" },
+  openGraph: { siteName: site.name, type: "website", locale: "en_US", url: "/", images: [shareImage] },
+  twitter: { card: "summary_large_image", images: [shareImage.url] },
+  icons: { apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  verification: {
+    ...(site.googleSiteVerification && { google: site.googleSiteVerification }),
+    ...(site.bingSiteVerification && { other: { "msvalidate.01": site.bingSiteVerification } }),
+  },
   formatDetection: { telephone: false },
   // Keep preview builds out of search results until real details are in place.
   robots: site.prelaunch ? { index: false, follow: false } : { index: true, follow: true },
@@ -34,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-US">
       <body className="min-h-screen pb-24 font-sans text-[1.0625rem] antialiased md:pb-0">
+        <JsonLd graph={[organizationSchema(), websiteSchema()]} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-navy focus:shadow-lg"

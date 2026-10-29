@@ -85,3 +85,35 @@ indexing. Before setting it to `false` and spending on ads:
 - On the site, `src/components/Logo.tsx` draws the same mark inline; the wheel turns twice on load and again on hover
   (`.logo-wheel` in `globals.css`). `src/app/icon.svg` is the static mark.
 - Earlier concepts remain in `brand/logos/` and `brand/logos/pin/` for reference.
+
+## SEO
+
+Built in:
+
+| Item | Where |
+| --- | --- |
+| Unique title, description and canonical URL per page | `const page = {...}` at the top of each `src/app/*/page.tsx` → `pageMetadata()` |
+| Open Graph and X (Twitter) cards with a 1200×630 share image | `src/lib/metadata.ts`, image at `/opengraph-image.png` (`src/app/opengraph-image.png/route.tsx`) |
+| Structured data (JSON-LD): Organization, WebSite, WebPage, BreadcrumbList, Service (4 service pages), FAQPage | `src/lib/schema.ts`, rendered by `src/components/JsonLd.tsx` |
+| XML sitemap with image entries and priorities | `/sitemap.xml` (`src/app/sitemap.ts`) |
+| robots.txt (blocks everything while `prelaunch` is true) | `/robots.txt` (`src/app/robots.ts`) |
+| Favicon, Apple touch icon, PNG and maskable icons, web manifest | `/icon.svg`, `/apple-touch-icon.png`, `/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`, `/manifest.webmanifest` |
+| Organization logo for Google | `/logo.png` (512×512) |
+| Search Console / Bing verification tags | `googleSiteVerification`, `bingSiteVerification` in `site.ts` |
+| Fast images: WebP at two widths with JPEG fallback, sized to prevent layout shift | `src/components/Photo.tsx`; regenerate `*.webp` and `*-640.webp` when adding a photo |
+| Semantic HTML, one `h1` per page, descriptive alt text, internal links in nav and footer | throughout |
+
+Structured data only states what `site.ts` says. Never add ratings, reviews, prices, an address or service areas
+that aren't real and verifiable: Google treats misleading markup as spam.
+
+### To start ranking
+
+1. Finish the launch checklist, then set `prelaunch: false` and push. Until then every page is `noindex` and
+   robots.txt blocks crawling, so nothing will rank.
+2. Verify the domain in Google Search Console (DNS TXT record, or paste the token into `googleSiteVerification`),
+   then submit `https://mobilityassist.online/sitemap.xml`. Do the same in Bing Webmaster Tools.
+3. Test a few URLs with Google's Rich Results Test and the Schema Markup Validator.
+4. Authority comes from outside the site: create a Google Business Profile (service-area business, no public address
+   needed), keep the name and phone identical everywhere, list in reputable directories, and earn links from local
+   disability, senior-care and caregiver organizations. Add each official profile URL to `socialProfiles`.
+5. Only add city or state pages for places with verified provider coverage, each with genuinely local detail.
