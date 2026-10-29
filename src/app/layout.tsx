@@ -25,7 +25,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { siteName: site.name, type: "website", locale: "en_US", url: "/", images: [shareImage] },
   twitter: { card: "summary_large_image", images: [shareImage.url] },
-  icons: { apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   verification: {
     ...(site.googleSiteVerification && { google: site.googleSiteVerification }),
     ...(site.bingSiteVerification && { other: { "msvalidate.01": site.bingSiteVerification } }),
