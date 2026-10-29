@@ -47,7 +47,6 @@ indexing. Before setting it to `false` and spending on ads:
 
 **Business identity**
 - [ ] Confirm the legal business name and fill in `legalName`, `email`, `privacyEmail`, `hours`, `mailingAddress`, `governingState`.
-- [ ] Resolve the legacy website and directory listings that still associate 888-317-4337 with another company.
 - [ ] Confirm the number is fully under your control, answered as Mobility Assist, and works from US phones. Then set `phone.verified: true`.
 
 **Service fulfilment**

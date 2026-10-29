@@ -25,7 +25,7 @@ export function LegalPage({ title, eyebrow = "Legal", intro, children }: { title
   );
 }
 
-/** "call 888-317-4337 (Mon–Fri ...) or email x" with only the details that are configured. */
+/** "call 888-450-3026 (Mon–Fri ...) or email x" with only the details that are configured. */
 export function ContactMethods({ email = site.email, placement }: { email?: string | null; placement: string }) {
   return (
     <>
