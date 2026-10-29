@@ -1,0 +1,78 @@
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { MobileCallBar } from "@/components/MobileCallBar";
+import { PrelaunchBanner } from "@/components/PrelaunchBanner";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { site } from "@/config/site";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Accessible Transportation Booking & Coordination`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  alternates: { canonical: "/" },
+  openGraph: { siteName: site.name, type: "website", locale: "en_US", url: "/" },
+  twitter: { card: "summary" },
+  formatDetection: { telephone: false },
+  // Keep preview builds out of search results until real details are in place.
+  robots: site.prelaunch ? { index: false, follow: false } : { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A3D47",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en-US">
+      <body className="min-h-screen pb-24 font-sans text-[1.0625rem] antialiased md:pb-0">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-navy focus:shadow-lg"
+        >
+          Skip to content
+        </a>
+        <PrelaunchBanner />
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+        <MobileCallBar />
+        {site.googleAdsId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`} strategy="afterInteractive" />
+            <Script id="google-tag" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${site.googleAdsId}');${
+                site.googleAdsCallConversion
+                  ? `
+// Count a lead each time a visitor taps a call button or phone link.
+document.addEventListener('click', function (e) {
+  var link = e.target && e.target.closest && e.target.closest('a[data-cta="call"]');
+  if (link) gtag('event', 'conversion', { send_to: '${site.googleAdsCallConversion}', transport_type: 'beacon' });
+}, true);`
+                  : ""
+              }${
+                site.googleAdsFormConversion
+                  ? `
+// Count an accepted ride request. No form data is ever attached.
+window.addEventListener('ma:request-submitted', function () {
+  gtag('event', 'conversion', { send_to: '${site.googleAdsFormConversion}' });
+});`
+                  : ""
+              }`}
+            </Script>
+          </>
+        )}
+      </body>
+    </html>
+  );
+}
