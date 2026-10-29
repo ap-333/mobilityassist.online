@@ -38,8 +38,12 @@ export default function HomePage() {
                 Request Transportation
               </Link>
             </div>
-            <p className="mt-5 max-w-xl rounded-xl bg-white/10 p-4 leading-relaxed text-white">
-              {disclosures.independent} {disclosures.paid}
+            <p className="mt-5 max-w-xl rounded-xl bg-white/10 px-4 py-3 text-sm leading-relaxed text-white sm:text-base">
+              Independent, paid booking service.{" "}
+              <Link href="/pricing/" className="font-semibold underline">
+                Plans from $29
+              </Link>
+              , ride fare separate.
             </p>
           </div>
 
