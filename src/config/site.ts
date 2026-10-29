@@ -76,7 +76,7 @@ export const site = {
   bingSiteVerification: null as string | null,
 
   /** Google Ads tag (gtag.js). Set to null to remove the tag from every page. */
-  googleAdsId: null as string | null, // e.g. "AW-XXXXXXXXXX"
+  googleAdsId: "AW-18397689422" as string | null,
   /** Conversion sent when a visitor taps any call button or phone link. */
   googleAdsCallConversion: null as string | null, // e.g. "AW-XXXXXXXXXX/abc123"
   /** Conversion sent when the ride-request form is accepted. Carries no form data. */
