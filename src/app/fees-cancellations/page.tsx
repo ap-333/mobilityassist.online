@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ContactMethods, LegalPage } from "@/components/LegalPage";
-import { site } from "@/config/site";
+import { planTerms, plans, site } from "@/config/site";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
 import { pageSchema } from "@/lib/schema";
@@ -35,11 +35,31 @@ export default function Page() {
           telling you.
         </p>
 
-        <h2>Mobility Assist fees and compensation</h2>
+        <h2>Mobility Assist is a paid service</h2>
         <p>
-          {site.fees.coordinationFee ??
-            "If Mobility Assist charges a booking or coordination fee for your trip, we will tell you the amount, what it covers and whether it is refundable before you commit."}
+          Mobility Assist charges its own fee for booking and coordination. This fee is separate from, and in addition to, the ride fare.
+          You choose one of three plans:
         </p>
+        <ul>
+          {plans.map((p) => (
+            <li key={p.id}>
+              <strong>{p.name}:</strong> ${p.price} {p.unit}.
+            </li>
+          ))}
+        </ul>
+        <p>
+          What each plan includes is described on our <Link href="/pricing/">Plans &amp; Pricing</Link> page. We will tell you which plan
+          applies and the amount before you commit.
+        </p>
+
+        <h2>When plan fees are charged and refunded</h2>
+        <ul>
+          {planTerms.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+
+        <h2>Provider compensation</h2>
         {site.fees.mayReceiveProviderCompensation && (
           <p>
             Mobility Assist may also receive a referral commission from a provider for a completed booking. Where this is relevant to your
@@ -77,8 +97,8 @@ export default function Page() {
 
         <h2>Refunds of Mobility Assist fees</h2>
         <p>
-          If you paid Mobility Assist a fee, we will tell you before you commit whether it is refundable if no ride is ultimately fulfilled.
-          We can refund only amounts that Mobility Assist itself collected. Approved refunds are returned to the original payment method;
+          A plan fee for a confirmed trip is non-refundable, except that we refund it in full if the provider cancels or no ride can be
+          provided. We also correct any amount charged in error. We can refund only amounts that Mobility Assist itself collected. Approved refunds are returned to the original payment method;
           the time it takes to appear depends on your bank or card issuer.
         </p>
 

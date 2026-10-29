@@ -4,7 +4,7 @@ export const primaryNav: Route[] = [
   { href: "/how-it-works/", label: "How It Works" },
   { href: "/wheelchair-transportation/", label: "Wheelchair Rides" },
   { href: "/scheduled-rides/", label: "Scheduled Rides" },
-  { href: "/service-areas/", label: "Service Areas" },
+  { href: "/pricing/", label: "Pricing" },
   { href: "/faq/", label: "FAQ" },
 ];
 
@@ -18,6 +18,7 @@ export const serviceNav: Route[] = [
 
 export const companyNav: Route[] = [
   { href: "/about/", label: "About Mobility Assist" },
+  { href: "/pricing/", label: "Plans & Pricing" },
   { href: "/independent-providers/", label: "Our Independent Provider Model" },
   { href: "/request-a-ride/", label: "Request a Ride" },
   { href: "/service-areas/", label: "Service Areas" },

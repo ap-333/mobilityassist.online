@@ -23,16 +23,20 @@ export const faqs: Faq[] = [
     a: (
       <>
         <p>
-          The provider sets its own fare, which depends on distance, timing, vehicle type and the help the passenger needs.{" "}
-          {site.fees.coordinationFee ?? "Mobility Assist may charge a separate booking or coordination fee."}
+          Mobility Assist is a paid service. {site.fees.coordinationFee} The provider sets its own ride fare, which depends on distance,
+          timing, vehicle type and the help the passenger needs.
         </p>
         <p className="mt-2">
-          Before you commit, we tell you the known fare, any Mobility Assist fee, who collects each amount and the cancellation terms. Details
-          are on our{" "}
+          Before you commit, we tell you the ride fare, our fee, who collects each amount and the cancellation terms. Our fee is
+          non-refundable once a trip is confirmed, unless the provider cancels or no ride can be provided. See{" "}
+          <Link href="/pricing/" className="font-semibold text-action underline">
+            Plans &amp; Pricing
+          </Link>{" "}
+          and{" "}
           <Link href="/fees-cancellations/" className="font-semibold text-action underline">
             Fees &amp; Cancellations
-          </Link>{" "}
-          page.
+          </Link>
+          .
         </p>
       </>
     ),

@@ -293,7 +293,12 @@ export function RideRequestForm() {
           {status === "sending" ? "Sending…" : "Send Transportation Request"}
         </button>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">
-          Sending this form is a request for assistance, not a confirmed reservation.
+          Sending this form is a request for assistance, not a confirmed reservation. It is free to send. If you go ahead with a trip,
+          Mobility Assist charges a plan fee, separate from the ride fare, that we tell you before you commit. See{" "}
+          <Link href="/pricing/" className="font-semibold text-action underline">
+            Plans &amp; Pricing
+          </Link>
+          .
         </p>
       </div>
     </form>

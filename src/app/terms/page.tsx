@@ -76,8 +76,13 @@ export default function Page() {
 
         <h2>5. Fares, fees, taxes and payment</h2>
         <p>
-          Before you commit to a booking, Mobility Assist will disclose the known transportation fare, any separate booking or coordination
-          fee charged by Mobility Assist, applicable taxes or additional charges, and the party responsible for collecting each amount.
+          Mobility Assist is a paid service. {site.fees.coordinationFee} What each plan includes is set out on our{" "}
+          <Link href="/pricing/">Plans &amp; Pricing</Link> page. A plan fee for a confirmed trip is non-refundable, except that it is refunded in full
+          if the provider cancels or no ride can be provided. The Care Plan renews monthly until you cancel, and you can cancel at any time
+          before your next billing date.
+        </p>
+        <p>
+          Before you commit to a booking, Mobility Assist will disclose the known transportation fare, the Mobility Assist fee that applies, applicable taxes or additional charges, and the party responsible for collecting each amount.
         </p>
         <p>
           No undisclosed coordination fee will be added by Mobility Assist after you have accepted a quote. If a provider&apos;s fare

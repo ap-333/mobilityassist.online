@@ -30,7 +30,7 @@ export function PageHero({ eyebrow, title, children, showCall = true, placement 
               <LinkButton href="/request-a-ride/">Request Transportation</LinkButton>
             </div>
             <p className="mt-4 max-w-2xl rounded-xl border border-line bg-white p-4 text-[0.95rem] leading-relaxed text-ink">
-              {disclosures.independent}
+              {disclosures.independent} {disclosures.paid}
             </p>
           </div>
         )}

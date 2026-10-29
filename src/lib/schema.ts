@@ -1,12 +1,12 @@
 import { isValidElement, type ReactNode } from "react";
 import { companyNav, legalNav, serviceNav } from "@/config/routes";
-import { businessName, site } from "@/config/site";
+import { businessName, plans, site } from "@/config/site";
 import { faqs } from "@/content/faq";
 
 /**
  * schema.org structured data (JSON-LD) for search engines. Only facts the
  * site already states are described: no ratings, prices, addresses or
- * coverage claims that aren't in src/config/site.ts.
+ * coverage claims that aren't in src/config/site.ts. Plan prices come from `plans`.
  */
 
 const orgId = `${site.url}/#organization`;
@@ -125,6 +125,38 @@ export function pageSchema(path: string, title: string, description: string) {
       provider: { "@id": orgId },
       areaServed: { "@type": "Country", name: "United States" },
       audience: { "@type": "Audience", audienceType: "Passengers with mobility needs, families and caregivers" },
+    });
+  }
+  if (path === "/pricing/") {
+    graph.push({
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: "Accessible transportation booking and coordination",
+      serviceType: "Transportation booking and coordination",
+      description: "Paid booking and coordination plans. Plan fees are separate from the ride fare, which the independent provider sets.",
+      url,
+      provider: { "@id": orgId },
+      areaServed: { "@type": "Country", name: "United States" },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Mobility Assist plans",
+        itemListElement: plans.map((p) => ({
+          "@type": "Offer",
+          name: p.name,
+          description: `${p.summary} Coordination fee only; the ride fare is separate.`,
+          url: `${url}#${p.id}`,
+          price: p.price.toFixed(2),
+          priceCurrency: "USD",
+          ...(p.id === "care-plan" && {
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: p.price.toFixed(2),
+              priceCurrency: "USD",
+              referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+            },
+          }),
+        })),
+      },
     });
   }
   return graph;

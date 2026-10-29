@@ -100,7 +100,7 @@ export function CallPopup() {
       <div className="px-5 pt-5 pb-4 sm:px-6 sm:pt-6 sm:pb-6">
         <CallButton variant="accent" size="lg" placement="popup" className="w-full" />
         <ul className="mt-5 hidden space-y-2 text-[0.95rem] text-ink sm:block">
-          {["Wheelchair-accessible and scheduled rides", "Fare and any fees explained before you commit", "Booking for yourself or a family member"].map(
+          {["Wheelchair-accessible and scheduled rides", "Fare and our fee explained before you commit", "Booking for yourself or a family member"].map(
             (t) => (
               <li key={t} className="flex gap-2">
                 <CheckIcon className="mt-0.5 size-5 shrink-0 text-teal" />
@@ -110,7 +110,7 @@ export function CallPopup() {
           )}
         </ul>
         <p className="mt-4 border-t border-line pt-3 text-[0.8rem] leading-relaxed text-muted sm:pt-4 sm:text-sm">
-          {disclosures.independent} {disclosures.emergency}
+          <strong className="text-ink">{disclosures.paid}</strong> {disclosures.independent} {disclosures.emergency}
         </p>
         <div className="mt-2 flex justify-between gap-3 sm:mt-3">
           <Link href="/request-a-ride/" onClick={close} className="py-2 text-sm font-semibold text-action hover:underline">

@@ -52,7 +52,7 @@ indexing. Before setting it to `false` and spending on ads:
 **Service fulfilment**
 - [ ] Sign agreements with initial transport partners; document real service areas and vehicle capabilities.
 - [ ] Add only verified areas to `serviceAreas`.
-- [ ] Decide the fee and commission model; fill in `fees.coordinationFee`, `fees.fareCollection`, `fees.mayReceiveProviderCompensation`.
+- [ ] Plan prices and fee terms live in `plans`, `planTerms` and `fees.coordinationFee` in `src/config/site.ts`. Have counsel review the Care Plan auto-renewal wording, and fill in `fees.fareCollection` and `fees.mayReceiveProviderCompensation`.
 
 **Legal**
 - [ ] Have every legal page reviewed by US counsel for your states and actual brokerage model, and edit to match practice

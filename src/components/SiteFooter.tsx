@@ -28,6 +28,12 @@ export function SiteFooter() {
         <div>
           <Logo inverted />
           <p className="mt-4 max-w-sm leading-relaxed text-white/85">{disclosures.independent}</p>
+          <p className="mt-3 max-w-sm leading-relaxed text-white/85">
+            {disclosures.paid}{" "}
+            <Link href="/pricing/" className="font-semibold text-white underline">
+              See plans
+            </Link>
+          </p>
           <p className="mt-4">
             <span className="text-white/70">Call: </span>
             <PhoneLink placement="footer" className="text-white" />

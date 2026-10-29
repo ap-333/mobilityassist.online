@@ -55,7 +55,10 @@ export const site = {
      * Mobility Assist." When null, the site says any fee is disclosed
      * before you commit.
      */
-    coordinationFee: null as string | null,
+    coordinationFee:
+      "Mobility Assist charges its own coordination fee, separate from the fare: $29 per confirmed one-way trip, $49 per confirmed round trip, or $149 a month on the Care Plan." as
+        | string
+        | null,
     /** Who collects the transportation fare, e.g. "The provider collects the fare directly." */
     fareCollection: null as string | null,
     /** Whether Mobility Assist may receive a referral commission from providers. Confirm before launch. */
@@ -85,12 +88,69 @@ export const site = {
   lastUpdated: "2026-10-29",
 } as const;
 
+/**
+ * Mobility Assist's own paid plans. These fees cover booking and coordination
+ * only; the transportation fare is always separate and set by the provider.
+ */
+export const plans = [
+  {
+    id: "one-way",
+    name: "One-Way Ride",
+    price: 29,
+    unit: "per confirmed one-way trip",
+    summary: "For a single trip, such as getting to an appointment when you already have a ride home.",
+    features: [
+      "We check with independent providers for a suitable vehicle",
+      "Wheelchair and mobility-device needs discussed on the call",
+      "Provider, fare and cancellation terms explained before you commit",
+      "Trip details confirmed to you by phone",
+    ],
+  },
+  {
+    id: "round-trip",
+    name: "Round Trip",
+    price: 49,
+    unit: "per confirmed round trip",
+    summary: "For appointments and outings where the passenger needs to get there and back.",
+    features: [
+      "Everything in One-Way Ride, for both legs of the trip",
+      "Outbound and return pickups coordinated together",
+      "Ride-day support: call us if the return time changes",
+    ],
+    featured: true,
+  },
+  {
+    id: "care-plan",
+    name: "Care Plan",
+    price: 149,
+    unit: "per month",
+    summary: "For regular trips, such as therapy or dialysis schedules, booked by the passenger or a family caregiver.",
+    features: [
+      "Coordination of up to 8 one-way trips a month (a round trip counts as 2)",
+      "A dedicated coordinator who knows the passenger's needs",
+      "Trip updates to a family member or caregiver you name",
+      "Recurring appointments scheduled in advance",
+      "Extra trips that month at $29 per one-way trip",
+    ],
+  },
+] as const;
+
+/** When plan fees are charged and refunded. Shown on the Pricing and Fees pages. */
+export const planTerms = [
+  "Plan fees are for Mobility Assist's booking and coordination only. They do not include the transportation fare.",
+  "The fare is set by the independent provider and quoted to you separately before you commit.",
+  "One-Way Ride and Round Trip fees are charged only when your trip is confirmed. No fee is charged for calls, quotes or requests that don't result in a confirmed trip.",
+  "Once a trip is confirmed, its plan fee is non-refundable, including if you cancel or change the trip. It is refunded in full if the provider cancels or no ride can be provided.",
+  "The Care Plan is billed monthly in advance from the day you join and renews each month until you cancel. Cancel by phone at any time before your next billing date to stop future charges. The current month's fee is non-refundable, and unused trips don't carry over.",
+];
+
 export const disclosures = {
   independent:
     "Mobility Assist is an independent booking and coordination service. Transportation is provided by third-party operators, subject to availability and confirmation.",
-  short: "Independent booking & coordination service · Not an emergency service",
+  paid: "Mobility Assist is a paid service. Our coordination fee is $29 per confirmed one-way trip, $49 per confirmed round trip, or $149 a month on the Care Plan. The ride fare is separate and set by the provider.",
+  short: "Paid booking & coordination service · Not an emergency service",
   emergency: "Mobility Assist is not an emergency or ambulance service. In an emergency, call 911.",
-  fees: "Before you commit, we tell you the known fare, any separate Mobility Assist fee, who collects each amount and the cancellation terms.",
+  fees: "Before you commit, we tell you the ride fare, our coordination fee, who collects each amount and the cancellation terms. Our fee is non-refundable once a trip is confirmed.",
   affiliation:
     "Mobility Assist is not affiliated with, endorsed by or acting for any government agency, insurer, healthcare provider or transportation company unless a specific relationship is expressly disclosed.",
   notReservation:

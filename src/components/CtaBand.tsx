@@ -10,7 +10,7 @@ export function CtaBand({ placement, title = "Talk it through with a real person
           <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">{title}</h2>
           <p className="mt-3 leading-relaxed text-white/85">
             Tell us where you need to go and what the passenger needs. We check with independent providers and explain the options,
-            fares and fees before you decide.
+            fares and our plan fee before you decide.
           </p>
           <p className="mt-3 text-sm text-white/75">{disclosures.short}</p>
         </div>

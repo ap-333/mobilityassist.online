@@ -51,8 +51,9 @@ export default function Page() {
 
         <h2>5. Fees Mobility Assist can refund</h2>
         <p>
-          Refund eligibility depends on the party that collected the payment, the applicable booking terms and the circumstances of the
-          complaint. We can refund only amounts Mobility Assist itself collected, and we will not promise a refund that we do not have
+          Mobility Assist plan fees are non-refundable once a trip is confirmed, except that we refund them in full if the provider cancels
+          or no ride can be provided, and we correct any amount charged in error. Refunds of the ride fare depend on the party that
+          collected it and its terms. We can refund only amounts Mobility Assist itself collected, and we will not promise a refund that we do not have
           authority to issue. See <Link href="/fees-cancellations/">Fees &amp; Cancellations</Link>.
         </p>
 

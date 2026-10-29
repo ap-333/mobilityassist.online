@@ -5,6 +5,7 @@ import { InfoIcon } from "./icons";
 /** The key facts a customer needs at the point of decision, in readable text. */
 export function DisclosureBox({ title = "Before you book", className = "" }: { title?: string; className?: string }) {
   const items = [
+    disclosures.paid,
     disclosures.independent,
     disclosures.fees,
     disclosures.notReservation,
@@ -29,9 +30,13 @@ export function DisclosureBox({ title = "Before you book", className = "" }: { t
         <Link href="/transportation-disclosure/" className="font-semibold text-action underline">
           Transportation &amp; Booking Disclosure
         </Link>{" "}
-        and{" "}
+        ,{" "}
         <Link href="/fees-cancellations/" className="font-semibold text-action underline">
           Fees &amp; Cancellations
+        </Link>{" "}
+        and{" "}
+        <Link href="/pricing/" className="font-semibold text-action underline">
+          Plans &amp; Pricing
         </Link>
         .
       </p>

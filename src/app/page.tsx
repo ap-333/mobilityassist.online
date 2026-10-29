@@ -2,6 +2,8 @@ import Link from "next/link";
 import { CallButton } from "@/components/CallButton";
 import { CtaBand } from "@/components/CtaBand";
 import { LinkButton } from "@/components/LinkButton";
+import { PaidServiceNotice } from "@/components/PaidServiceNotice";
+import { PlanCards } from "@/components/PlanCards";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeading } from "@/components/PageHero";
 import { ChatIcon, MapPinIcon, ReceiptIcon, ShieldIcon } from "@/components/icons";
@@ -36,7 +38,9 @@ export default function HomePage() {
                 Request Transportation
               </Link>
             </div>
-            <p className="mt-5 max-w-xl rounded-xl bg-white/10 p-4 leading-relaxed text-white">{disclosures.independent}</p>
+            <p className="mt-5 max-w-xl rounded-xl bg-white/10 p-4 leading-relaxed text-white">
+              {disclosures.independent} {disclosures.paid}
+            </p>
           </div>
 
           <div className="relative">
@@ -61,7 +65,18 @@ export default function HomePage() {
       <WhoWeHelp />
       <HowItWorksSteps tone="surface" />
 
-      <Section labelledBy="why-heading">
+      <Section labelledBy="plans-heading">
+        <SectionHeading
+          id="plans-heading"
+          eyebrow="Plans & pricing"
+          title="Simple plans for booking help"
+          intro="Mobility Assist is a paid service. Our plan fee covers booking and coordination; the ride fare is separate and quoted before you commit."
+        />
+        <PlanCards placement="home-plans" />
+        <PaidServiceNotice className="mt-8" />
+      </Section>
+
+      <Section tone="surface" labelledBy="why-heading">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
             <SectionHeading id="why-heading" eyebrow="Why use a booking concierge?" title="Less phoning around, clearer answers" />
@@ -86,7 +101,7 @@ export default function HomePage() {
               {
                 icon: ReceiptIcon,
                 title: "Prices before commitment",
-                body: "You hear the known fare, any Mobility Assist fee and who collects each amount up front.",
+                body: "You hear the ride fare, our plan fee and who collects each amount up front.",
               },
               {
                 icon: ChatIcon,
@@ -105,7 +120,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section tone="surface" labelledBy="coverage-heading">
+      <Section labelledBy="coverage-heading">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <div>
             <SectionHeading
@@ -123,9 +138,9 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <FaqSection count={6} tone="white" />
+      <FaqSection count={6} tone="surface" />
 
-      <Section tone="surface" labelledBy="contact-heading">
+      <Section labelledBy="contact-heading">
         <SectionHeading id="contact-heading" eyebrow="Contact" title="Talk to Mobility Assist" />
         <dl className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border border-line bg-white p-5">
