@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { CallPopup } from "@/components/CallPopup";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { PrelaunchBanner } from "@/components/PrelaunchBanner";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <SiteFooter />
         <MobileCallBar />
+        <CallPopup />
         {site.googleAdsId && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`} strategy="afterInteractive" />
