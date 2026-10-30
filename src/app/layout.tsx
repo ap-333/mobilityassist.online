@@ -48,6 +48,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/** Google tags loaded through one gtag.js: Analytics first, then Ads. */
+const googleTagIds = [site.googleAnalyticsId, site.googleAdsId].filter((id): id is string => Boolean(id));
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-US">
@@ -64,14 +67,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
         <MobileCallBar />
         <CallPopup />
-        {site.googleAdsId && (
+        {googleTagIds.length > 0 && (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`} strategy="afterInteractive" />
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${googleTagIds[0]}`} strategy="afterInteractive" />
             <Script id="google-tag" strategy="afterInteractive">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${site.googleAdsId}');${
+${googleTagIds.map((id) => `gtag('config', '${id}');`).join("\n")}${
                 site.googleAdsCallConversion
                   ? `
 // Count a lead each time a visitor taps a call button or phone link.

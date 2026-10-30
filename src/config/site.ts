@@ -78,6 +78,8 @@ export const site = {
   googleSiteVerification: null as string | null,
   bingSiteVerification: null as string | null,
 
+  /** Google Analytics 4 measurement ID. Set to null to remove it from every page. */
+  googleAnalyticsId: "G-DKQEDVEDHT" as string | null,
   /** Google Ads tag (gtag.js). Set to null to remove the tag from every page. */
   googleAdsId: "AW-18397689422" as string | null,
   /** Conversion sent when a visitor taps any call button or phone link. */
